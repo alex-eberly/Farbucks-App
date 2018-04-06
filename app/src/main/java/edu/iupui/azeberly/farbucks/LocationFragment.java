@@ -89,12 +89,14 @@ public class LocationFragment extends Fragment {
 
         public TextView mNameTextView;
         public TextView mAddressTextView;
-        //public TextView
+        public TextView mCityTextView;
 
         public LocationHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.location_list_item, parent, false));
-            mNameTextView = (TextView) itemView.findViewById(R.id.location_detail_name);
+            mNameTextView = (TextView) itemView.findViewById(R.id.location_name);
             mAddressTextView = (TextView) itemView.findViewById(R.id.location_address);
+            mCityTextView = (TextView) itemView.findViewById(R.id.location_city);
+
 
             itemView.setOnClickListener(this);
         }
@@ -107,6 +109,7 @@ public class LocationFragment extends Fragment {
 
             mNameTextView.setText(location.getName());
             mAddressTextView.setText(location.getAddress());
+            mCityTextView.setText(location.getCity());
         } // END bindLocation METHOD
 
         @Override

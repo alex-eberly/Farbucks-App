@@ -12,10 +12,12 @@ import edu.iupui.azeberly.farbucks.FarbucksApp;
 
 public class FarbucksDataStore {
 
-    // CREATE A STATIC VARIABLE THAT HOLDS A REFERENCE TO THE ONE AND ONLY OBJECT OF THIS CLASS
+    // CREATE A STATIC VARIABLE THAT HOLDS A REFERENCE TO THE OBJECTS OF THIS CLASS
     private static FarbucksDataStore sFarbucksDataStore;
 
     private LocationDao mLocationDao;
+
+    private MenuItemDao mMenuItemDao;
 
     private DaoSession mDaoSession;
 
@@ -24,6 +26,7 @@ public class FarbucksDataStore {
     private FarbucksDataStore(Application context) {
         mDaoSession = ((FarbucksApp) context).getDaoSession();
         mLocationDao = mDaoSession.getLocationDao();
+        mMenuItemDao = mDaoSession.getMenuItemDao();
     }
 
 
@@ -39,6 +42,11 @@ public class FarbucksDataStore {
     public List<Location> getLocations() {
         List<Location> allLocations = mLocationDao.loadAll();
         return allLocations;
+    }
+
+    public List<MenuItem> getMenuItems() {
+        List<MenuItem> allMenuItems = mMenuItemDao.loadAll();
+        return allMenuItems;
     }
 
 }
